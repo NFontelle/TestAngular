@@ -2,9 +2,13 @@
 <div>
    <form #login="ngForm" (ngSubmit)="onFormSubmit(login)" >
 
-      <input type="text" ngModel name="email" classe="form-control" placeholder="identifiant">
+      <input type="text" ngModel name="email" ngModel classe="form-control" placeholder="identifiant" required>
+      <p class="error-msg" *ngIf="validation && email === ''">Veuillez remplir le champ</p>
+      <p class="error-msg" *ngIf="validation && email != '' && email != username">Cet utilisateur n'éxiste pas</p>
       <br/>
-      <input type="password" ngModel name="password" classe="form-control" placeholder="mot de passe">
+      <input type="password" ngModel name="passwd" ngModel classe="form-control" placeholder="mot de passe" required>
+      <p class="error-msg" *ngIf="validation && passwd === ''">Veuillez remplir le champ</p>
+      <p class="error-msg" *ngIf="validation && passwd != '' && passwd != password">Erreur de mot de passe</p>
       <button class="logButton">Log In</button>
 
    </form>

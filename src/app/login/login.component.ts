@@ -7,20 +7,19 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username!: string;
-  password!: string;
-
-
-  setValue() {
-    this.username = "username@mail.fr";
-    this.password = "MotDePasse";
-  }
+  username = "username@mail.fr";
+  password = "MotDePasse";
+  email!: string;
+  passwd!: string;
+  validation: boolean = false;
 
   ngOnInit(): void {
   }
 
   onFormSubmit(login:NgForm){
-    console.log(login);
+    this.email = login.form.value.email;
+    this.passwd = login.form.value.passwd;
+    this.validation = true;
   }
 
 }
